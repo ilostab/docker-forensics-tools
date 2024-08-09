@@ -13,6 +13,8 @@ This project runs various forensics tools in docker containers
 - [X] [sidr](https://github.com/strozfriedberg)
 - [X] [yara-x](https://virustotal.github.io/yara-x/docs/intro/getting-started/) | includes Yara-Forge rules in `/app/rules/`
 - [X] [hayabusa](https://github.com/Yamato-Security/hayabusa)
+- [X] [chainsaw](https://github.com/WithSecureLabs/chainsaw) | includes rules from [SigmaHQ](https://github.com/SigmaHQ/sigma) in `/app/rules/sigma/`
+- [X] [capa](https://github.com/mandiant/capa) | includes rules from [capa-rules](https://github.com/mandiant/capa-rules) in `/app/rules/`
 
 # OTHER PROJECTS
 - [log2timeline](https://plaso.readthedocs.io/en/latest/sources/user/Installing-with-docker.html): `docker run log2timeline/plaso log2timeline.py --version`
