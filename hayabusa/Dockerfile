@@ -1,6 +1,6 @@
 # Use the official Rust image as a base
 FROM rust:latest
-LABEL description="hayabusa compiled from git"
+LABEL description="hayabusa compiled from source"
 LABEL maintainer="Ilo, @ilostab"
 
 # Install system dependencies (libssl-dev)
