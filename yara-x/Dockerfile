@@ -1,6 +1,9 @@
 # Use an official Rust image as the base
 FROM rust:latest
 
+LABEL description="yara-x built from git"
+LABEL maintainer="Ilo, @ilostab"
+
 # Set the working directory within the container
 WORKDIR /app
 

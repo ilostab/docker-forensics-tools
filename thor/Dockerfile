@@ -1,6 +1,9 @@
 # Use the latest Ubuntu image as the base
 FROM ubuntu:latest
 
+LABEL description="Thor Entreprise"
+LABEL maintainer="Ilo, @ilostab"
+
 # Install unzip in case it's needed to extract the ZIP file
 RUN apt-get update && apt-get install -y unzip
 

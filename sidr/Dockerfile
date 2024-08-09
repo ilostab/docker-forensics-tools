@@ -1,6 +1,9 @@
 # Use an official Rust image as the base
 FROM rust:1.72.1-slim-buster
 
+LABEL description="sidr built from git"
+LABEL maintainer="Ilo, @ilostab"
+
 # Set up a working directory within the container
 WORKDIR /app
 

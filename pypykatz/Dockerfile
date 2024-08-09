@@ -2,6 +2,9 @@
 #FROM debian:buster-slim
 FROM python:3.9-slim
 
+LABEL description="pypykatz 0.6.6"
+LABEL maintainer="Ilo, @ilostab"
+
 # Environment Variables
 ENV VIRTUAL_ENV=/app/pypykatz/venv
 WORKDIR /app/pypykatz
