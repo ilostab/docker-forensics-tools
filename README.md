@@ -15,13 +15,15 @@ This project runs various forensics tools in docker containers
 - [X] [hayabusa](https://github.com/Yamato-Security/hayabusa)
 - [X] [chainsaw](https://github.com/WithSecureLabs/chainsaw) | includes rules from [SigmaHQ](https://github.com/SigmaHQ/sigma) in `/app/rules/sigma/`
 - [X] [capa](https://github.com/mandiant/capa) | includes rules from [capa-rules](https://github.com/mandiant/capa-rules) in `/app/rules/`
+- [X] [densityscout](https://www.sans.org/blog/finding-unknown-malware-with-densityscout/)
+- [X] [regripper 4.0](https://github.com/keydet89/RegRipper4.0)
 
 # OTHER PROJECTS
 - [log2timeline](https://plaso.readthedocs.io/en/latest/sources/user/Installing-with-docker.html): `docker run log2timeline/plaso log2timeline.py --version`
 - [volatility2](): `docker run -v $PWD:/workspace sk4la/volatility -f /workspace/volatile.mem `
 - [volatility3](https://github.com/sk4la/volatility3-docker) `docker run -v $PWD:/workspace sk4la/volatility3 -f /workspace/volatile.mem windows.pslist`
 - [velociraptor](https://github.com/weslambert/velociraptor-docker) `see github project`
-
+- [clamav]() `sudo docker run clamav/clamav clamscan`
 # Similar project
 - [CinCan](https://gitlab.com/CinCan/tools) CinCan tools
 
