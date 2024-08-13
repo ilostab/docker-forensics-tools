@@ -1,5 +1,6 @@
 # docker-forensics-tools
-This project runs various forensics tools in docker containers
+- This project runs various forensics tools in docker containers. 
+- Rust projects are built with a Docker builder, then moved to a distroless docker run environment to make the image smaller.  
 
 # BUILD AND RUN
 - `git clone https://github.com/ilostab/docker-forensics-tools.git && cd docker-forensics-tools`
@@ -23,7 +24,7 @@ This project runs various forensics tools in docker containers
 - [volatility2](): `docker run -v $PWD:/workspace sk4la/volatility -f /workspace/volatile.mem `
 - [volatility3](https://github.com/sk4la/volatility3-docker) `docker run -v $PWD:/workspace sk4la/volatility3 -f /workspace/volatile.mem windows.pslist`
 - [velociraptor](https://github.com/weslambert/velociraptor-docker) `see github project`
-- [clamav]() `sudo docker run clamav/clamav clamscan`
+- [clamav](https://github.com/Cisco-Talos/clamav) `sudo docker run clamav/clamav clamscan`
 # Similar project
 - [CinCan](https://gitlab.com/CinCan/tools) CinCan tools
 

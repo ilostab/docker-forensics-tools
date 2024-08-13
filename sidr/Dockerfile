@@ -1,5 +1,5 @@
 # Use an official Rust image as the base
-FROM rust:1.72.1-slim-buster
+FROM rust:slim-bullseye as builder
 
 LABEL description="sidr built from source"
 LABEL maintainer="Ilo, @ilostab"
@@ -11,13 +11,17 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y git
 
 # Clone the repository
-RUN git clone https://github.com/strozfriedberg/sidr.git
+RUN git clone https://github.com/strozfriedberg/sidr.git .
 
 # Change to the cloned repository
-WORKDIR /app/sidr
+WORKDIR /app/
 
 # Build the project in release mode
 RUN cargo build --release
 
+# RUN DISTROLESS
+FROM gcr.io/distroless/cc
+COPY --from=builder /app/target/release/sidr /app/
+
 # Specify the command to run when the container starts
-CMD ["./target/release/sidr"]
+CMD ["./app/sidr"]

@@ -1,5 +1,5 @@
 # Use an official Rust image as the base
-FROM rust:latest
+FROM rust:slim-bullseye as builder
 
 LABEL description="yara-x built from source"
 LABEL maintainer="Ilo, @ilostab"
@@ -9,7 +9,7 @@ WORKDIR /app
 
 # Update package lists and install necessary tools
 RUN apt-get update && \
-    apt-get install -y curl wget unzip ca-certificates && \
+    apt-get install -y git curl wget unzip ca-certificates && \
     rm -rf /var/lib/apt/lists/*
 
 # Install jq from the official JavaScript repository
@@ -21,7 +21,8 @@ RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && \
 RUN git clone https://github.com/VirusTotal/yara-x .
 
 # Build the yara-x command-line interface (CLI)
-RUN cargo install --path cli
+# RUN cargo install --path cli
+RUN cargo build --release
 
 # Make a directory for rule sets
 RUN mkdir /app/rules
@@ -38,6 +39,12 @@ RUN RESP=$(curl -s https://api.github.com/repos/YARAHQ/yara-forge/releases/lates
     unzip -t /app/rules/full.zip && unzip /app/rules/full.zip -d /app/rules || (echo "Error: full.zip is corrupted" && exit 1) && \
     rm /app/rules/*.zip
 
+# RUN DISTROLESS
+FROM gcr.io/distroless/cc
 
-# Set the entrypoint to the yara-x executable
-ENTRYPOINT ["yr"]
+# Copy the necessary files and directories from the builder stage
+COPY --from=builder /app/target/release/yara-x /app/
+COPY --from=builder /app/rules /app/rules
+
+# Specify the command to run when the container starts
+CMD ["./app/yara-x"]

@@ -1,20 +1,30 @@
 # Use the official Rust image as a base
-FROM rust:latest
+FROM rust:slim-bullseye as builder
 LABEL description="chainsaw compiled from source"
 LABEL maintainer="Ilo, @ilostab"
 
 # Set the working directory inside the container
 WORKDIR /app
 
-# Clone the chainsaw repository with submodules
-RUN git clone https://github.com/WithSecureLabs/chainsaw.git .
+# Update and install git
+RUN apt-get update && apt-get install -y git
 
-# Add sigmaHQ rules
-RUN mkdir /app/rules/sigma/
-RUN git clone https://github.com/SigmaHQ/sigma /app/rules/sigma/
+# Clone the chainsaw repository
+RUN git clone https://github.com/WithSecureLabs/chainsaw.git .
 
 # Build hayabusa in release mode
 RUN cargo build --release
 
-# Specify the command to run when the container starts (optional)
-CMD ["./target/release/chainsaw"]
+# Add sigmaHQ rules within the builder stage
+RUN mkdir -p /app/rules/sigma/  # Create the directory structure
+RUN git clone https://github.com/SigmaHQ/sigma /app/rules/sigma/
+
+# RUN DISTROLESS
+FROM gcr.io/distroless/cc
+
+# Copy the necessary files and directories from the builder stage
+COPY --from=builder /app/target/release/chainsaw /app/
+COPY --from=builder /app/rules /app/rules
+
+# Specify the command to run when the container starts
+CMD ["./app/chainsaw"]
