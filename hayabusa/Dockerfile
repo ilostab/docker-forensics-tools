@@ -1,5 +1,5 @@
 # Use the official Rust image as a base
-FROM rust:latest as builder
+FROM rust:latest AS builder
 LABEL description="hayabusa compiled from source"
 LABEL maintainer="Ilo, @ilostab"
 

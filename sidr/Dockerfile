@@ -1,5 +1,5 @@
 # Use an official Rust image as the base
-FROM rust:slim-bullseye as builder
+FROM rust:slim-bullseye AS builder
 
 LABEL description="sidr built from source"
 LABEL maintainer="Ilo, @ilostab"

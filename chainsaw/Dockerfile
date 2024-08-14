@@ -1,5 +1,5 @@
 # Use the official Rust image as a base
-FROM rust:slim-bullseye as builder
+FROM rust:slim-bullseye AS builder
 LABEL description="chainsaw compiled from source"
 LABEL maintainer="Ilo, @ilostab"
 
