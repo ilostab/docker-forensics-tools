@@ -4,6 +4,11 @@
 
 # BUILD AND RUN
 - `git clone https://github.com/ilostab/docker-forensics-tools.git && cd docker-forensics-tools`
+- `chmod +x build.sh`
+- `./build.sh`
+- `docker run <tool-name>`
+
+Alternative
 - `cd <tool-folder>`
 - `docker build -t <tool-name> . --no-cache`
 - `docker run <tool-name>`
