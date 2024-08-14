@@ -21,7 +21,7 @@
 
 # OTHER PROJECTS
 - [log2timeline](https://plaso.readthedocs.io/en/latest/sources/user/Installing-with-docker.html): `docker run log2timeline/plaso log2timeline.py --version`
-- [volatility2](): `docker run -v $PWD:/workspace sk4la/volatility -f /workspace/volatile.mem `
+- [volatility2](https://github.com/sk4la/volatility3-docker): `docker run -v $PWD:/workspace sk4la/volatility -f /workspace/volatile.mem `
 - [volatility3](https://github.com/sk4la/volatility3-docker) `docker run -v $PWD:/workspace sk4la/volatility3 -f /workspace/volatile.mem windows.pslist`
 - [velociraptor](https://github.com/weslambert/velociraptor-docker) `see github project`
 - [clamav](https://github.com/Cisco-Talos/clamav) `sudo docker run clamav/clamav clamscan`
