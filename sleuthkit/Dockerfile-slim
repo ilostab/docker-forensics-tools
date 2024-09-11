@@ -1,0 +1,41 @@
+# Use the latest Ubuntu image
+FROM ubuntu:latest
+
+# Set environment variables to reduce interaction during package installs
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install necessary build tools and dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    autoconf \
+    automake \
+    libtool \
+    default-jdk \
+    git \
+    wget \
+    curl \
+    libafflib-dev \
+    libewf-dev \
+    libvhdi-dev \
+    libvmdk-dev \
+    libvslvm-dev \
+    libbfio-dev \
+    pkg-config
+
+# Clone the Sleuth Kit repository
+RUN git clone https://github.com/sleuthkit/sleuthkit.git /usr/src/sleuthkit
+
+# Set the working directory to the sleuthkit directory
+WORKDIR /usr/src/sleuthkit
+
+# Bootstrap and configure the build system
+RUN ./bootstrap && ./configure --prefix=/usr/local
+
+# Compile and install Sleuth Kit
+RUN make && make install
+
+# Add /usr/local/bin to PATH
+ENV PATH="/usr/local/bin:$PATH"
+
+# Default command to run bash
+CMD ["/bin/bash"]
