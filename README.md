@@ -30,6 +30,12 @@ Alternative
 - [volatility3](https://github.com/sk4la/volatility3-docker) `docker run -v $PWD:/workspace sk4la/volatility3 -f /workspace/volatile.mem windows.pslist`
 - [velociraptor](https://github.com/weslambert/velociraptor-docker) `see github project`
 - [clamav](https://github.com/Cisco-Talos/clamav) `sudo docker run clamav/clamav clamscan`
+
+## VOL3 optimization for docker
+- `sudo docker volume create symbols`
+- `sudo docker run -v symbols:/usr/local/lib/volatility3/volatility3/symbols/ -v $PWD:/w sk4la/volatility3 -f /w/volatile.mem windows.pslist --save-config /w/volatile.conf`
+- `sudo docker run -v symbols:/usr/local/lib/volatility3/volatility3/symbols/ -v $PWD:/w sk4la/volatility3 -c /w/volatile.conf`
+
 # Similar project
 - [CinCan](https://gitlab.com/CinCan/tools) CinCan tools
 
