@@ -39,9 +39,14 @@ RUN git clone https://github.com/libyal/libewf-legacy.git /usr/src/libewf && \
 RUN git clone https://github.com/libyal/libvhdi.git /usr/src/libvhdi && \
     cd /usr/src/libvhdi && ./synclibs.sh && ./autogen.sh && ./configure && make && make install
 
-# Install Libvmdk (from source)
+# Install LibVMDK
 RUN git clone https://github.com/libyal/libvmdk.git /usr/src/libvmdk && \
-    cd /usr/src/libvmdk && ./synclibs.sh && ./autogen.sh && ./configure && make && make install
+    cd /usr/src/libvmdk && \
+    ./synclibs.sh && \
+    ./autogen.sh && \
+    ./configure --enable-shared && \
+    make && \
+    make install
 
 # Install Libvslvm (from source)
 RUN git clone https://github.com/libyal/libvslvm.git /usr/src/libvslvm && \
@@ -71,6 +76,9 @@ RUN make && make install
 
 # Add /usr/local/bin to PATH
 ENV PATH="/usr/local/bin:$PATH"
+
+# Set library paths
+ENV LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
 
 # Default command to run bash
 CMD ["/bin/bash"]
