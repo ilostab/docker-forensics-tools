@@ -17,7 +17,7 @@ jobs:
 
       - name: List repository contents
         id: directory
-        run: echo "directories=$(ls -d */ | grep -Ev '^(thor|dev_)' | sed 's@/$@@g' | tr -s ' ' | jq -R 'split(" ") | map("\(.)")')" >> $GITHUB_OUTPUT
+        run: echo "directories=$(ls -d */ | grep -Ev '^(thor|dev_)' | sed 's@/$@@g' | tr -s ' ' | tr -d '\n\r' | jq -R 'split(" ") | map("\(.)")')" >> $GITHUB_OUTPUT
 
   test_listing: # New job for testing
     runs-on: ubuntu-latest
