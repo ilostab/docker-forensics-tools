@@ -43,8 +43,8 @@ RUN RESP=$(curl -s https://api.github.com/repos/YARAHQ/yara-forge/releases/lates
 FROM gcr.io/distroless/cc
 
 # Copy the necessary files and directories from the builder stage
-COPY --from=builder /app/target/release/yara-x /app/
+COPY --from=builder /app/target/release/yr /app/
 COPY --from=builder /app/rules /app/rules
 
 # Specify the command to run when the container starts
-CMD ["./app/yara-x"]
+CMD ["./app/yr"]
