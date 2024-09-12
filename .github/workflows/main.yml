@@ -17,7 +17,7 @@ jobs:
       - name: List repository contents
         id: directory
         run: |
-          echo "directories=$(ls -d */ | grep -Ev '^(thor|dev_)')" >> $GITHUB_OUTPUT
+          echo "directories=$(ls -d */ | grep -Ev '^(thor|dev_)' | sed 's@/$@@')" >> $GITHUB_OUTPUT
 
       - name: Display directories
         run: echo "Directories found:" ${{ steps.directory.outputs.directories }}
