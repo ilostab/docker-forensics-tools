@@ -1,0 +1,35 @@
+name: test
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  find-jobs:
+    name: Find Jobs
+    runs-on: ubuntu-latest
+    outputs:
+      folders: ${{ steps.list-folders.outputs.result }} # Adjust output reference
+    steps:
+      - uses: actions/checkout@v3
+
+      - id: list-folders # New ID for glob action
+        uses: actions/glob@v3
+        with:
+          patterns: './path/to/folder/*/' # Match only folders
+
+  matrix:
+    name: Matrix Jobs
+    needs: [find-jobs]
+    runs-on: ubuntu-latest 
+    defaults:
+      run:
+        working-directory: ${{ matrix.folder }}
+    strategy:
+      matrix:
+        folder: ${{ fromJson(needs.find-jobs.outputs.folders) }} # Adjust output reference
+    steps:
+      - name: do something
+        run: echo ${{ matrix.folder }}
