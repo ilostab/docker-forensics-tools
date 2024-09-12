@@ -21,6 +21,7 @@ jobs:
 
       - name: Iterate over directories
         run: |
-          for dir in ${{ steps.directory.outputs.directories }}; do
+          IFS='/' read -ra dirs <<< "${{ steps.directory.outputs.directories }}"
+          for dir in "${dirs[@]}"; do
             echo "Processing directory: $dir"
           done
