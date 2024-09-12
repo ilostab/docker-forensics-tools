@@ -12,14 +12,12 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
-    - name: Search for outer directories
+    - name: Glob match
       id: search_directories
-      uses: advanced-security/glob-match@v2
+      uses: tj-actions/glob@v22
       with:
-        pattern: '*/'
-        flags: 'd'
+        pattern: '*/'  # Matches top-level directories
 
     - name: Display directories
-      run: echo "Directories found:" ${{ steps.search_directories.outputs.files }}
