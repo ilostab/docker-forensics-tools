@@ -1,6 +1,11 @@
 # docker-forensics-tools
 - This project runs various forensics tools in docker containers. 
-- Rust projects are built with a Docker builder, then moved to a distroless docker run environment to make the image smaller.  
+- Rust projects are built with a Docker builder, then moved to a distroless docker run environment to make the image smaller.
+
+| What | Example | Source |
+|---|---|---|
+| Row 1, Cell 1 | Row 1, Cell 2 | Row 1, Cell 3 |
+| Row 2, Cell 1 | Row 2, Cell 2 | Row 2, Cell 3 |
 
 # BUILD AND RUN
 - `git clone https://github.com/ilostab/docker-forensics-tools.git && cd docker-forensics-tools`
