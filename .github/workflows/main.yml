@@ -19,5 +19,8 @@ jobs:
         run: |
           echo "directories=$(ls -d */ | grep -Ev '^(thor|dev_)' | tr -d '\n\r' | sed 's@/$@@g')" >> $GITHUB_OUTPUT
 
-      - name: Display directories
-        run: echo "Directories found:" ${{ steps.directory.outputs.directories }}
+      - name: Iterate over directories
+        run: |
+          for dir in ${{ steps.directory.outputs.directories }}; do
+            echo "Processing directory: $dir"
+          done
