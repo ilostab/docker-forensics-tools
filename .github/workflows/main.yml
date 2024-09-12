@@ -19,7 +19,11 @@ jobs:
         id: directory
         run: |
           directories=$(ls -d */ | grep -Ev '^(thor|dev_)' | tr -d '\n\r' | sed 's@/$@@g')
-          echo "directories=[\"$directories\"]" >> $GITHUB_OUTPUT 
+          directories_array=()
+          for dir in $directories; do
+            directories_array+=("\"$dir\"") 
+          done
+          echo "directories=[${directories_array[@]}]" >> $GITHUB_OUTPUT 
 
   test_listing: # New job for testing
     runs-on: ubuntu-latest
