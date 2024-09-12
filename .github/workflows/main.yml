@@ -7,31 +7,19 @@ on:
   workflow_dispatch:
 
 jobs:
-  find-jobs:
-    name: Find Jobs
+  search_directories:
     runs-on: ubuntu-latest
-    outputs:
-      folders: ${{ steps.glob.outputs.paths }} 
-    steps:
-      - uses: actions/checkout@v4
 
-      - name: Glob match
-        uses: tj-actions/glob@v22
-        id: glob
-        with:
-          files: |
-            **
-
-  matrix:
-    name: Matrix Jobs
-    needs: [find-jobs]
-    runs-on: ubuntu-latest 
-    defaults:
-      run:
-        working-directory: ${{ matrix.folder }}
-    strategy:
-      matrix:
-        folder: ${{ fromJson(needs.find-jobs.outputs.folders) }} 
     steps:
-      - name: do something
-        run: echo ${{ matrix.folder }}
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Search for outer directories
+      id: search_directories
+      uses: advanced-security/glob-match@v2
+      with:
+        pattern: '*/'
+        flags: 'd'
+
+    - name: Display directories
+      run: echo "Directories found:" ${{ steps.search_directories.outputs.files }}
