@@ -20,7 +20,7 @@ jobs:
         id: glob
         with:
           files: |
-            */Dockerfile
+            **
 
   matrix:
     name: Matrix Jobs
