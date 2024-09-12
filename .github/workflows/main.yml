@@ -9,7 +9,7 @@ on:
 jobs:
   find-jobs:
     name: Find Jobs
-    runs-on: debian:buster-slim
+    runs-on: ubuntu-latest
     outputs:
       folders: ${{ steps.jobs.outputs.folders }}
     steps:
