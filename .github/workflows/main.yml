@@ -21,4 +21,4 @@ jobs:
         pattern: '*/'  # Matches top-level directories
 
     - name: Display directories
-      run: echo "Directories found: ${{ steps.search_directories.outputs.files }}"
+      run: echo "Directories found:" ${{ steps.search_directories.outputs.files }}
