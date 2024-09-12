@@ -7,12 +7,12 @@ function check_and_push() {
 
     if ! docker manifest inspect "$IMAGE_NAME:$TAG" >/dev/null 2>&1; then
         echo "Tag $TAG does not exist for $IMAGE_NAME. \n\tBuilding image..."
-        docker build -t $IMAGE_NAME:$TAG $FOLDER
-        docker build -t $IMAGE_NAME:latest $FOLDER
+        docker build -q -t $IMAGE_NAME:$TAG $FOLDER
+        docker build -q -t $IMAGE_NAME:latest $FOLDER
 
         echo "\t pushing image $IMAGE_NAME:$TAG"
-        docker push "$IMAGE_NAME:$TAG"
-        docker push "$IMAGE_NAME:latest"
+        docker push -q "$IMAGE_NAME:$TAG"
+        docker push -q "$IMAGE_NAME:latest"
     else
         echo "Tag $TAG already exists for $IMAGE_NAME. Doing nothing."
     fi
