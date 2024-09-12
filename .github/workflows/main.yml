@@ -1,0 +1,36 @@
+name: test
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  find-jobs:
+    name: Find Jobs
+    runs-on: debian:buster-slim
+    outputs:
+      folders: ${{ steps.jobs.outputs.folders }}
+    steps:
+      - uses: actions/checkout@v3  
+
+
+      - id: jobs
+        uses: philips-labs/list-folders-action@v1
+        with:
+          path: ./path/to/folder
+
+  matrix:
+    name: Matrix Jobs
+    needs: [find-jobs]
+    runs-on: ubuntu-latest  # Added runs-on
+    defaults:
+      run:
+        working-directory: ${{ matrix.folder }}
+    strategy:
+      matrix:
+        folder: ${{ fromJson(needs.find-jobs.outputs.folders )}}
+    steps:
+      - name: do something
+        run: echo ${{ matrix.folder}}
