@@ -20,7 +20,7 @@ jobs:
         id: glob
         with:
           files: |
-            ./[!.]*/  # Match only outermost folders
+            */Dockerfile
 
   matrix:
     name: Matrix Jobs
