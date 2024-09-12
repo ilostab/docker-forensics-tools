@@ -18,8 +18,7 @@ jobs:
       id: search_directories
       uses: tj-actions/glob@v22
       with:
-        files: '*/'  # Matches top-level directories
-        match-directories: true  # Ensure it only matches directories
+        files: '*/*.sh'
 
     - name: Display directories
       run: echo "Directories found:" ${{ steps.search_directories.outputs.files }}
