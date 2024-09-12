@@ -11,26 +11,25 @@ jobs:
     name: Find Jobs
     runs-on: ubuntu-latest
     outputs:
-      folders: ${{ steps.jobs.outputs.folders }}
+      folders: ${{ steps.list-folders.outputs.result }} 
     steps:
-      - uses: actions/checkout@v3  
+      - uses: actions/checkout@v3
 
-
-      - id: jobs
-        uses: philips-labs/list-folders-action@v1
+      - id: list-folders 
+        uses: actions/glob@v3
         with:
-          path: ./path/to/folder
+          patterns: './[!.]*/' # Match only outermost folders
 
   matrix:
     name: Matrix Jobs
     needs: [find-jobs]
-    runs-on: ubuntu-latest  # Added runs-on
+    runs-on: ubuntu-latest 
     defaults:
       run:
         working-directory: ${{ matrix.folder }}
     strategy:
       matrix:
-        folder: ${{ fromJson(needs.find-jobs.outputs.folders )}}
+        folder: ${{ fromJson(needs.find-jobs.outputs.folders) }} 
     steps:
       - name: do something
-        run: echo ${{ matrix.folder}}
+        run: echo ${{ matrix.folder }}
