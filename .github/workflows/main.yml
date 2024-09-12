@@ -11,17 +11,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: List repository contents (debugging)
-      run: ls -a 
+      - name: List repository contents
+        id: directory
+        run: |
+          echo "directories=$(ls -d */ | grep -Ev '^(thor|dev_)')" >> $GITHUB_OUTPUT
 
-    - name: Glob match
-      id: search_directories
-      uses: tj-actions/glob@v22
-      with:
-        files: '**'
-
-    - name: Display directories
-      run: echo "Directories found:" ${{ steps.search_directories.outputs.files }}
+      - name: Display directories
+        run: echo "Directories found:" ${{ steps.directory.outputs.directories }}
