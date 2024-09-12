@@ -11,14 +11,16 @@ jobs:
     name: Find Jobs
     runs-on: ubuntu-latest
     outputs:
-      folders: ${{ steps.list-folders.outputs.result }} 
+      folders: ${{ steps.glob.outputs.paths }} 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - id: list-folders 
-        uses: actions/glob@v3
+      - name: Glob match
+        uses: tj-actions/glob@v22
+        id: glob
         with:
-          patterns: './[!.]*/' # Match only outermost folders
+          files: |
+            ./[!.]*/  # Match only outermost folders
 
   matrix:
     name: Matrix Jobs
