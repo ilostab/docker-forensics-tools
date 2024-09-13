@@ -25,6 +25,7 @@ FROM gcr.io/distroless/cc
 # Copy the necessary files and directories from the builder stage
 COPY --from=builder /app/target/release/chainsaw /app/
 COPY --from=builder /app/rules /app/rules
+COPY --from=builder /app/mappings/ /app/mappings
 
 # Optionally, add the directory to PATH if you want to run it directly
 ENV PATH="/app:${PATH}"

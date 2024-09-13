@@ -10,4 +10,7 @@ RUN apt-get update && \
     unzip densityscout.zip -d /app/ && \
     chmod +x /app/lin64/densityscout
 
+# Optionally, add the directory to PATH if you want to run it directly
+ENV PATH="/app/lin64:${PATH}"
+
 CMD ["/app/lin64/densityscout"]
