@@ -18,7 +18,7 @@ function check_and_push() {
     fi
 }
 
-DOCKER_HUB_ACCOUNT="ilostab6"
+DOCKER_HUB_ACCOUNT=$DOCKER_HUB_USERNAME
 PUSH_DIR=$(ls -d */ | grep -v 'thor\|dev' | sed 's/\///g')
 
 for FOLDER in $PUSH_DIR; do
