@@ -19,7 +19,7 @@ function check_and_push() {
 }
 
 DOCKER_HUB_ACCOUNT=$DOCKER_HUB_USERNAME
-PUSH_DIR=$(ls -d */ | grep -v 'thor\|dev' | sed 's/\///g')
+PUSH_DIR=$(ls -d */ | grep -v 'thor\|dev\|build' | sed 's/\///g')
 
 for FOLDER in $PUSH_DIR; do
         TAG=$(sha256sum $FOLDER/Dockerfile | awk '{print substr($1,1,3) substr($1,length($1)-2)}')
