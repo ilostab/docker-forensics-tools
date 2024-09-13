@@ -18,6 +18,8 @@ function check_and_push() {
     fi
 }
 
+cd ..
+
 DOCKER_HUB_ACCOUNT=$DOCKER_HUB_USERNAME
 PUSH_DIR=$(ls -d */ | grep -v 'thor\|dev' | sed 's/\///g')
 
