@@ -4,7 +4,7 @@
 | Verified | What | Example Raw | Example Run |
 |---|---|---|---|
 | Y | [pypykatz](https://github.com/skelsec/pypykatz) | `docker run ilostab6/pypykatz` | `docker run -v $(pwd)::/w/ ilostab6/pypykatz lsa minidump /w/lsa.dump` |
-| N | [sidr](https://github.com/strozfriedberg/sidr) | `docker run ilostab6/sidr` | `docker run -v $(pwd):/w/ ilostab6/sidr -f json /w/path/` |
+| Y | [sidr](https://github.com/strozfriedberg/sidr) | `docker run ilostab6/sidr` | `docker run -v $(pwd):/w/ ilostab6/sidr sidr /w/` |
 | Y | [yara-x](https://virustotal.github.io/yara-x/docs/intro/getting-started/) | `docker run ilostab6/yara-x` | `docker run -v $(pwd):/w/ ilostab6/yara-x yr scan /app/rules/ /w/capa_testfile.exe_` |
 | Y | [hayabusa](https://github.com/Yamato-Security/hayabusa) | `docker run ilostab6/hayabusa` | `docker run -v $(pwd):/w/ h-dv hayabusa csv-timeline --file /w/Exec_sysmon_meterpreter_reversetcp_msipackage.evtx --no-wizard --min-level high` |
 | Y | [chainsaw](https://github.com/WithSecureLabs/chainsaw) | `docker run ilostab6/chainsaw` | `docker run -v $(pwd):/w/ ilostab6/chainsaw chainsaw hunt /w/Exec_sysmon_meterpreter_reversetcp_msipackage.evtx -s /app/rules/ --mapping /app/mappings/sigma-event-logs-all.yml` |
