@@ -14,7 +14,7 @@ function check_and_push() {
         docker push -q "$IMAGE_NAME:$TAG"
         docker push -q "$IMAGE_NAME:latest"
     else
-        echo "Tag $TAG already exists for $IMAGE_NAME. \tDoing nothing."
+        echo "Tag $TAG already exists for $IMAGE_NAME. Doing nothing."
     fi
 }
 
