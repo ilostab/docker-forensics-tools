@@ -10,7 +10,7 @@
 | Y | [chainsaw](https://github.com/WithSecureLabs/chainsaw) | `docker run ilostab6/chainsaw` | `docker run -v $(pwd):/w/ ilostab6/chainsaw chainsaw hunt /w/Exec_sysmon_meterpreter_reversetcp_msipackage.evtx -s /app/rules/ --mapping /app/mappings/sigma-event-logs-all.yml` |
 | Y | [capa](https://github.com/mandiant/capa) | `docker run ilostab6/capa` | `docker run -v $(pwd):/w/ ilostab6/capa /w/capa_testfile.exe_ -r /app/rules/ -s /app/sigs/` |
 | Y | [densityscout](https://www.sans.org/blog/finding-unknown-malware-with-densityscout/) | `docker run ilostab6/densityscout` | `docker run -v $(pwd):/w/ ilostab6/densityscout densityscout /w/capa_testfile.exe_` |
-| N | [regripper 4.0](https://github.com/keydet89/RegRipper4.0) | `docker run ilostab6/regripper` | `docker run -v $(pwd):/w/ ilostab6/regripper` |
+| Y | [regripper 4.0](https://github.com/keydet89/RegRipper4.0) | `docker run ilostab6/regripper` | `docker run -v $(pwd):/w ilostab6/regripper -r /w/SYSTEM -a` |
 
 # Other projects
 | Verified | What | Example Raw | Example Run |
