@@ -3,8 +3,8 @@
 
 | Verified | What | Example Raw | Example Run |
 |---|---|---|---|
-|- [X] | [pypykatz](https://github.com/skelsec/pypykatz) | `docker run ilostab6/pypykatz` | `docker run -v $PWD:/w/ ilostab6/pypykatz lsa minidump /w/lsa.dump` |
-|- [ ] | [sidr](https://github.com/strozfriedberg) | `docker run ilostab6/sidr` | Row 2, Cell 3 |
+| [X] | [pypykatz](https://github.com/skelsec/pypykatz) | `docker run ilostab6/pypykatz` | `docker run -v $PWD:/w/ ilostab6/pypykatz lsa minidump /w/lsa.dump` |
+| [ ] | [sidr](https://github.com/strozfriedberg) | `docker run ilostab6/sidr` | Row 2, Cell 3 |
 
 - Rust projects are built with a Docker builder, then moved to a distroless docker run environment to make the image smaller.
 
