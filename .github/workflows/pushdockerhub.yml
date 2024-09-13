@@ -15,7 +15,7 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_SECRET }}
       - 
         name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - 
         name: Set environment variables
         run: |
