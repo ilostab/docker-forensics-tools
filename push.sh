@@ -10,7 +10,7 @@ function check_and_push() {
         docker build -q -t $IMAGE_NAME:$TAG $FOLDER
         docker build -q -t $IMAGE_NAME:latest $FOLDER
 
-        echo "\t pushing image $IMAGE_NAME:$TAG"
+        echo "\t pushing image $IMAGE_NAME:$TAG and $IMAGE_NAME:latest"
         docker push -q "$IMAGE_NAME:$TAG"
         docker push -q "$IMAGE_NAME:latest"
     else
