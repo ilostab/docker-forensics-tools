@@ -23,5 +23,5 @@ jobs:
       -
         name: Build and push
         run: |
-          chmod +x ./build/push.sh
-          ./build/push.sh
+          chmod +x ./push.sh
+          ./push.sh
