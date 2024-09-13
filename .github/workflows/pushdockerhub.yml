@@ -16,6 +16,10 @@ jobs:
       - 
         name: Checkout repository
         uses: actions/checkout@v3
+      - 
+        name: Set environment variables
+        run: |
+          echo "DOCKER_HUB_USERNAME=${{ secrets.DOCKER_HUB_USERNAME }}" >> $GITHUB_ENV
       -
         name: Build and push
         run: |
