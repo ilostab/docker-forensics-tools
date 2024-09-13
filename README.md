@@ -8,7 +8,7 @@
 | N | [yara-x](https://virustotal.github.io/yara-x/docs/intro/getting-started/) | `docker run ilostab6/yara-x` | `docker run -v $PWD:/w/ ilostab6/yara-x` |
 | N | [hayabusa](https://github.com/Yamato-Security/hayabusa) | `docker run ilostab6/hayabusa` | `docker run -v $PWD:/w/ ilostab6/hayabusa` |
 | N | [chainsaw](https://github.com/WithSecureLabs/chainsaw) | `docker run ilostab6/chainsaw` | `docker run -v $PWD:/w/ ilostab6/chainsaw` |
-| N | [capa](https://github.com/mandiant/capa) | `docker run ilostab6/capa` | `docker run -v $PWD:/w/ ilostab6/capa` |
+| Y | [capa](https://github.com/mandiant/capa) | `docker run ilostab6/capa` | `docker run -v $(pwd):/w/ capa-dev /w/capa_testfile.exe_ -r /app/rules/ -s /app/sigs/` |
 | N | [densityscout](https://www.sans.org/blog/finding-unknown-malware-with-densityscout/) | `docker run ilostab6/densityscout` | `docker run -v $PWD:/w/ ilostab6/densityscout` |
 | N | [regripper 4.0](https://github.com/keydet89/RegRipper4.0) | `docker run ilostab6/regripper` | `docker run -v $PWD:/w/ ilostab6/regripper` |
 

@@ -5,7 +5,7 @@ LABEL maintainer="Ilo, @ilostab"
 RUN apt-get update
 
 # Install capa using pip
-RUN apt-get install -y python3 python3-pip curl wget unzip ca-certificates
+RUN apt-get install -y python3 python3-pip curl wget unzip ca-certificates git
 RUN pip install flare-capa
 
 # Install jq from the official JavaScript repository
@@ -18,7 +18,11 @@ RUN mkdir /app/ && \
     CAPA_RULES_ZIP=$(curl -s https://api.github.com/repos/mandiant/capa-rules/releases/latest | jq -r '.zipball_url') && \
     curl -L $CAPA_RULES_ZIP -o /app/rules/capa-rules.zip && \
     unzip /app/rules/capa-rules.zip -d /app/rules && \
-    rm /app/rules/capa-rules.zip
+    rm /app/rules/capa-rules.zip && \
+    git clone https://github.com/mandiant/capa.git && \
+    cp -r capa/sigs /app/sigs && \
+    rm -r capa
+
 
 # Set the working directory (optional)
 WORKDIR /app
