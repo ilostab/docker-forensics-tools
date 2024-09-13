@@ -20,11 +20,14 @@ RUN mkdir -p /app/rules/sigma/  # Create the directory structure
 RUN git clone https://github.com/SigmaHQ/sigma /app/rules/sigma/
 
 # RUN DISTROLESS
-FROM ubuntu:latest
+FROM gcr.io/distroless/cc
 
 # Copy the necessary files and directories from the builder stage
 COPY --from=builder /app/target/release/chainsaw /app/
 COPY --from=builder /app/rules /app/rules
 
+# Optionally, add the directory to PATH if you want to run it directly
+ENV PATH="/app:${PATH}"
+
 # Specify the command to run when the container starts
-CMD ["./app/chainsaw"]
+CMD ["./app/chainsaw -h"]

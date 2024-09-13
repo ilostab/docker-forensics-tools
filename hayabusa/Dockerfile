@@ -16,13 +16,16 @@ RUN git clone --recursive https://github.com/Yamato-Security/hayabusa.git .
 RUN cargo build --release
 
 # RUN DISTROLESS
-FROM ubuntu:latest
+FROM gcr.io/distroless/cc
 
 # Copy the necessary files and directories from the builder stage
 COPY --from=builder /lib/x86_64-linux-gnu/libz.so.1 /lib/x86_64-linux-gnu/libz.so.1
 COPY --from=builder /app/target/release/hayabusa /app/
 COPY --from=builder /app/rules /app/rules/
 COPY --from=builder /app/config /app/config/
+
+# Optionally, add the directory to PATH if you want to run it directly
+ENV PATH="/app:${PATH}"
 
 # Specify the command to run when the container starts
 CMD ["./app/hayabusa"]
