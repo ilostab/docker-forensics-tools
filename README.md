@@ -3,14 +3,14 @@
 
 | Verified | What | Example Raw | Example Run |
 |---|---|---|---|
-| Y | [pypykatz](https://github.com/skelsec/pypykatz) | `docker run ilostab6/pypykatz` | `docker run -v $PWD:/w/ ilostab6/pypykatz lsa minidump /w/lsa.dump` |
-| N | [sidr](https://github.com/strozfriedberg/sidr) | `docker run ilostab6/sidr` | `docker run -v $PWD:/w/ ilostab6/sidr -f json /w/path/` |
-| N | [yara-x](https://virustotal.github.io/yara-x/docs/intro/getting-started/) | `docker run ilostab6/yara-x` | `docker run -v $PWD:/w/ ilostab6/yara-x` |
-| N | [hayabusa](https://github.com/Yamato-Security/hayabusa) | `docker run ilostab6/hayabusa` | `docker run -v $PWD:/w/ ilostab6/hayabusa` |
+| Y | [pypykatz](https://github.com/skelsec/pypykatz) | `docker run ilostab6/pypykatz` | `docker run -v $(pwd)::/w/ ilostab6/pypykatz lsa minidump /w/lsa.dump` |
+| N | [sidr](https://github.com/strozfriedberg/sidr) | `docker run ilostab6/sidr` | `docker run -v $(pwd):/w/ ilostab6/sidr -f json /w/path/` |
+| Y | [yara-x](https://virustotal.github.io/yara-x/docs/intro/getting-started/) | `docker run ilostab6/yara-x` | `docker run -v $(pwd):/w/ ilostab6/yara-x yr scan /app/rules/ /w/capa_testfile.exe_` |
+| Y | [hayabusa](https://github.com/Yamato-Security/hayabusa) | `docker run ilostab6/hayabusa` | `docker run -v $(pwd):/w/ h-dv hayabusa csv-timeline --file /w/Exec_sysmon_meterpreter_reversetcp_msipackage.evtx --no-wizard --min-level high` |
 | Y | [chainsaw](https://github.com/WithSecureLabs/chainsaw) | `docker run ilostab6/chainsaw` | `docker run -v $(pwd):/w/ ilostab6/chainsaw chainsaw hunt /w/Exec_sysmon_meterpreter_reversetcp_msipackage.evtx -s /app/rules/ --mapping /app/mappings/sigma-event-logs-all.yml` |
-| Y | [capa](https://github.com/mandiant/capa) | `docker run ilostab6/capa` | `docker run -v $(pwd):/w/ capa-dev /w/capa_testfile.exe_ -r /app/rules/ -s /app/sigs/` |
+| Y | [capa](https://github.com/mandiant/capa) | `docker run ilostab6/capa` | `docker run -v $(pwd):/w/ ilostab6/capa /w/capa_testfile.exe_ -r /app/rules/ -s /app/sigs/` |
 | Y | [densityscout](https://www.sans.org/blog/finding-unknown-malware-with-densityscout/) | `docker run ilostab6/densityscout` | `docker run -v $(pwd):/w/ ilostab6/densityscout densityscout /w/capa_testfile.exe_` |
-| N | [regripper 4.0](https://github.com/keydet89/RegRipper4.0) | `docker run ilostab6/regripper` | `docker run -v $PWD:/w/ ilostab6/regripper` |
+| N | [regripper 4.0](https://github.com/keydet89/RegRipper4.0) | `docker run ilostab6/regripper` | `docker run -v $(pwd):/w/ ilostab6/regripper` |
 
 # Other projects
 | Verified | What | Example Raw | Example Run |

@@ -40,11 +40,14 @@ RUN RESP=$(curl -s https://api.github.com/repos/YARAHQ/yara-forge/releases/lates
     rm /app/rules/*.zip
 
 # RUN DISTROLESS
-FROM ubuntu:latest
+FROM gcr.io/distroless/cc
 
 # Copy the necessary files and directories from the builder stage
 COPY --from=builder /app/target/release/yr /app/
 COPY --from=builder /app/rules /app/rules
+
+# Add path to run
+ENV PATH="/app:${PATH}"
 
 # Specify the command to run when the container starts
 CMD ["./app/yr"]
