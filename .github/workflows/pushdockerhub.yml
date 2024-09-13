@@ -4,7 +4,7 @@ on:
   push:
 
 jobs:
-  docker:
+  pushdockerhub:
     runs-on: ubuntu-latest
     steps:
       -
