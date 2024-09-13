@@ -20,7 +20,7 @@ RUN mkdir -p /app/rules/sigma/  # Create the directory structure
 RUN git clone https://github.com/SigmaHQ/sigma /app/rules/sigma/
 
 # RUN DISTROLESS
-FROM gcr.io/distroless/cc
+FROM ubuntu:latest
 
 # Copy the necessary files and directories from the builder stage
 COPY --from=builder /app/target/release/chainsaw /app/

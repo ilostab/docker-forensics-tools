@@ -40,7 +40,7 @@ RUN RESP=$(curl -s https://api.github.com/repos/YARAHQ/yara-forge/releases/lates
     rm /app/rules/*.zip
 
 # RUN DISTROLESS
-FROM gcr.io/distroless/cc
+FROM ubuntu:latest
 
 # Copy the necessary files and directories from the builder stage
 COPY --from=builder /app/target/release/yr /app/

@@ -20,7 +20,7 @@ WORKDIR /app/
 RUN cargo build --release
 
 # RUN DISTROLESS
-FROM gcr.io/distroless/cc
+FROM ubuntu:latest
 COPY --from=builder /app/target/release/sidr /app/
 
 # Specify the command to run when the container starts

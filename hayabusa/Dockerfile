@@ -16,7 +16,7 @@ RUN git clone --recursive https://github.com/Yamato-Security/hayabusa.git .
 RUN cargo build --release
 
 # RUN DISTROLESS
-FROM gcr.io/distroless/cc
+FROM ubuntu:latest
 
 # Copy the necessary files and directories from the builder stage
 COPY --from=builder /lib/x86_64-linux-gnu/libz.so.1 /lib/x86_64-linux-gnu/libz.so.1
