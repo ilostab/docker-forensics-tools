@@ -46,4 +46,7 @@ Alternative
 - `docker save <image-name> | gzip > <image-name>.tar.gz`
 
 # Import Docker image 
-- `gunzip -c <image-name>.tar.gz | docker load` 
+- `gunzip -c <image-name>.tar.gz | docker load`
+
+# Todo
+- Checkout [slimtoolkit/slim](https://github.com/slimtoolkit/slim?tab=readme-ov-file) to reduce Container Size 
