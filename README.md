@@ -11,6 +11,7 @@
 | Y | [capa](https://github.com/mandiant/capa) | `docker run ilostab6/capa` | `docker run -v $(pwd):/w/ ilostab6/capa /w/capa_testfile.exe_ -r /app/rules/ -s /app/sigs/` |
 | Y | [densityscout](https://www.sans.org/blog/finding-unknown-malware-with-densityscout/) | `docker run ilostab6/densityscout` | `docker run -v $(pwd):/w/ ilostab6/densityscout densityscout /w/capa_testfile.exe_` |
 | Y | [regripper 4.0](https://github.com/keydet89/RegRipper4.0) | `docker run ilostab6/regripper` | ` docker run -v $(pwd):/w ilostab6/regripper -r /w/SYSTEM -a` |
+| Y | [sleuthkit](https://github.com/sleuthkit/sleuthkit) | `docker run ilostab6/sleuthkit` | `docker run -v /mnt/ewf/:/w/ ilostab6/sleuthkit mmls /w/ewf1` |
 
 # Other projects
 | Verified | What | Example Raw | Example Run |
