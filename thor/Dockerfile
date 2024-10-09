@@ -1,7 +1,7 @@
 # Use the latest Ubuntu image as the base
 FROM ubuntu:latest
 
-LABEL description="Thor Entreprise"
+LABEL description="Thor Forensics Lab"
 LABEL maintainer="Ilo, @ilostab"
 
 # Install unzip in case it's needed to extract the ZIP file
